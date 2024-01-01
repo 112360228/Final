@@ -66,8 +66,31 @@ void displayPayroll(Employee *employee) {
 	printf("整周薪水：%d 元\n", employee->totalPay);
 }
 
+// 列印班表
+void printSchedule(Employee *employee) {
+	printf("\n員工 %s 的一周排班情況:\n", employee->name);
+	for (int day = 0; day < DAYS_IN_WEEK; ++day) {
+		printf("星期 %d: %d %d %d\n", day + 1, employee->schedule[day][0], employee->schedule[day][1], employee->schedule[day][2]);
+	}
+}
+
+// 修改班表
+void modifySchedule(Employee *employee) {
+	int num,day, timeSlot;
+
+	printf("請輸入要更改時間的次數:");
+	scanf("%d",&num);
+	for (int i = 0; i < num; i++) {
+		printf("\n請輸入要修改員工 %s 的排班的日期(1-7)和時段(1-3)：", employee->name);
+		scanf("%d %d", &day, &timeSlot);
+		printf("輸入新的排班情況（1表示上班，0表示不上班）：");
+		scanf("%d", &employee->schedule[day - 1][timeSlot - 1]);
+	}
+}
+
 int main() {
 	int numEmployees;
+	int option;
 
 	printf("請輸入員工人數：");
 	scanf("%d", &numEmployees);
@@ -81,11 +104,43 @@ int main() {
 		inputEmployeeSchedule(&employees[i]);
 	}
 
-	// 計算薪資並顯示薪資明細
-	for (int i = 0; i < numEmployees; ++i) {
-		calculatePay(&employees[i]);
-		displayPayroll(&employees[i]);
-	}
+	// 功能選單
+	do {
+		printf("\n選擇功能：\n");
+		printf("1. 列印班表\n");
+		printf("2. 修改班表\n");
+		printf("3. 列印員工薪資\n");
+		printf("4. 結束程式\n");
+		scanf("%d", &option);
+
+		switch (option) {
+		case 1:
+			// 列印班表
+			for (int i = 0; i < numEmployees; ++i) {
+				printSchedule(&employees[i]);
+			}
+			break;
+		case 2:
+			// 修改班表
+			int i;
+			printf("請輸入要修改的員工編號(1-%d):",numEmployees);
+			scanf("%d", &i);
+			modifySchedule(&employees[i-1]);
+			calculatePay(&employees[i-1]); // 重新計算薪資
+			break;
+		case 3:
+			// 列印員工薪資
+			for (int i = 0; i < numEmployees; ++i) {
+				displayPayroll(&employees[i]);
+			}
+			break;
+		case 4:
+			// 結束程式
+			break;
+		default:
+			printf("請輸入有效的選項。\n");
+		}
+	} while (option != 4);
 
 	free(employees);
 
