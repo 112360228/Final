@@ -19,7 +19,7 @@ typedef struct {
 void inputEmployeeSchedule(Employee *employee) {
 	printf("輸入 %s 的一周排班情況（早中晚，1表示上班，0表示不上班）:\n", employee->name);
 	for (int day = 0; day < DAYS_IN_WEEK; ++day) {
-		printf("禮拜 %d: ", day + 1);
+		printf("星期 %d: ", day + 1);
 		scanf("%d %d %d", &employee->schedule[day][0], &employee->schedule[day][1], &employee->schedule[day][2]);
 	}
 }
@@ -78,10 +78,22 @@ void displayPayroll(Employee *employee) {
 }
 
 // 列印班表
-void printSchedule(Employee *employee) {
-	printf("\n員工 %s 的一周排班情況:\n", employee->name);
-	for (int day = 0; day < DAYS_IN_WEEK; ++day) {
-		printf("星期 %d: %d %d %d\n", day + 1, employee->schedule[day][0], employee->schedule[day][1], employee->schedule[day][2]);
+void displaySchedule(Employee *employees, int numEmployees) {
+	printf("%-8s%-8s%-8s%-8s%-8s%-8s%-8s%-8s\n", "", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日");
+	printf("---------------------------------------------------------------\n");
+
+	char shiftNames[TIME_SLOTS][10] = { "早班", "午班", "晚班" };
+
+	for (int shift = 0; shift < TIME_SLOTS; shift++) {
+		printf("%s\n", shiftNames[shift]);
+		for (int i = 0; i < numEmployees; ++i) {
+			printf("%-8s", employees[i].name);
+			for (int day = 0; day < DAYS_IN_WEEK; ++day) {
+				printf("%-8c", employees[i].schedule[day][shift] ? 'O' : 'X');
+			}
+			printf("\n");
+		}
+		printf("\n");
 	}
 }
 
@@ -127,9 +139,7 @@ int main() {
 		switch (option) {
 		case 1:
 			// 列印班表
-			for (int i = 0; i < numEmployees; ++i) {
-				printSchedule(&employees[i]);
-			}
+			displaySchedule(employees, numEmployees);
 			break;
 		case 2:
 			// 修改班表
@@ -137,11 +147,11 @@ int main() {
 			printf("請輸入要修改的員工編號(1-%d):", numEmployees);
 			scanf("%d", &i);
 			modifySchedule(&employees[i - 1]);
-			calculatePay(&employees[i - 1]); // 重新計算薪資
 			break;
 		case 3:
 			// 列印員工薪資
 			for (int i = 0; i < numEmployees; ++i) {
+				calculatePay(&employees[i]); //計算薪資
 				displayPayroll(&employees[i]);
 			}
 			break;
