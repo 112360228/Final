@@ -15,12 +15,41 @@ typedef struct {
 	int totalPay;                   // 整周薪水
 } Employee;
 
+//分辨班表輸入是否正確
+int inputSchedule(int day, int x) {
+	char input[10];
+	int i = 0, output = 0;
+	if (x == 0)
+		printf("星期 %d: ", day + 1);
+	else
+		printf("請重新輸入: ");
+	scanf("%s", &input);
+	while (input[i] != '\0')
+	{
+		if (input[i] >= 48 && input[i] <= 49)
+		{
+			output *= 10;
+			output += input[i] - 47;
+		}
+		i++;
+	}
+	if (output < 100)
+		return inputSchedule(day, 1);
+	else
+		return output;
+}
+
 // 輸入員工排班情況
 void inputEmployeeSchedule(Employee *employee) {
+	int i, output;
 	printf("輸入 %s 的一周排班情況（早中晚，1表示上班，0表示不上班）:\n", employee->name);
 	for (int day = 0; day < DAYS_IN_WEEK; ++day) {
-		printf("星期 %d: ", day + 1);
-		scanf("%d %d %d", &employee->schedule[day][0], &employee->schedule[day][1], &employee->schedule[day][2]);
+		output = inputSchedule(day, 0);
+		for (int i = 2; i >= 0; i--)
+		{
+			employee->schedule[day][i] = output % 10 - 1;
+			output /= 10;
+		}
 	}
 }
 
