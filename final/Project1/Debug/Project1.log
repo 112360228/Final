@@ -1,20 +1,21 @@
 ﻿  Source.cpp
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(26): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(28): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(44): warning C4101: 'i': 未參考的區域變數
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(88): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(134): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(62): warning C4101: 'input': 未參考的區域變數
+c:\users\jin yi\downloads\final\final\project1\source.cpp(61): warning C4101: 'i': 未參考的區域變數
+c:\users\jin yi\downloads\final\final\project1\source.cpp(110): warning C4244: '正在初始化': 將 'double' 轉換為 'int'，由於類型不同，可能導致資料遺失
+c:\users\jin yi\downloads\final\final\project1\source.cpp(154): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(137): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(158): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(139): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(160): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(148): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(171): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(155): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(178): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(166): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(189): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-c:\users\user\onedrive\桌面\final\final\project1\source.cpp(177): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\jin yi\downloads\final\final\project1\source.cpp(200): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 請參閱 'scanf' 的宣告
-  Project1.vcxproj -> C:\Users\user\OneDrive\桌面\Final\final\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\Jin Yi\Downloads\Final\final\Debug\Project1.exe

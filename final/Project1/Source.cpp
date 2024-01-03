@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 #define DAYS_IN_WEEK 7 // 一周的天數
@@ -16,6 +17,7 @@ typedef struct {
 } Employee;
 
 //分辨班表輸入是否正確
+
 int inputSchedule(int day, int x) {
 	char input[10];
 	int i = 0, output = 0;
@@ -24,6 +26,20 @@ int inputSchedule(int day, int x) {
 	else
 		printf("請重新輸入: ");
 	scanf("%s", &input);
+
+	if (strcmp(input, "XXX") == 0) {
+		if (day > 0) {/*
+			day -= 1;
+			printf("星期 %d: ", day + 1);
+			scanf("%s", &input);
+			*/
+			return -1;
+		}
+		else {
+			printf("今天是星期一 \n ");
+		}
+	}
+
 	while (input[i] != '\0')
 	{
 		if (input[i] >= 48 && input[i] <= 49)
@@ -40,20 +56,30 @@ int inputSchedule(int day, int x) {
 }
 
 // 輸入員工排班情況
+
 void inputEmployeeSchedule(Employee *employee) {
 	int i, output;
+	char input[10];
+
 	printf("輸入 %s 的一周排班情況（早中晚，1表示上班，0表示不上班）:\n", employee->name);
+
 	for (int day = 0; day < DAYS_IN_WEEK; ++day) {
+
 		output = inputSchedule(day, 0);
-		for (int i = 2; i >= 0; i--)
-		{
+		if (output == -1) {
+			day -= 2; continue;
+		}
+		for (int i = 2; i >= 0; i--) {
 			employee->schedule[day][i] = output % 10 - 1;
 			output /= 10;
 		}
 	}
 }
 
+
+
 // 計算薪資
+
 void calculatePay(Employee *employee) {
 	int totalWorkHours = 0;
 	int weekendWorkHours = 0;
@@ -66,21 +92,17 @@ void calculatePay(Employee *employee) {
 				dailyWorkHours += 4; // 每個時段為4小時
 			}
 		}
-
 		if (day == 5 || day == 6) { // 如果是星期六或星期日
 			weekendWorkHours += dailyWorkHours; // 累計周末工作時數
 		}
-
 		if (dailyWorkHours > 8) {
 			overtimeHours += dailyWorkHours - 8; // 計算單日超過8小時的加班時數
 		}
-
 		totalWorkHours += dailyWorkHours; // 累計總工作時數
 	}
-
 	int regularHours = (totalWorkHours > 40) ? 40 : totalWorkHours; // 標準工時
-
 	int holidayHours = 0; // 假日工時
+
 	if (weekendWorkHours > 8) { // 如果周末工時超過8小時
 		holidayHours = weekendWorkHours - 8; // 計算假日工時
 	}
@@ -95,7 +117,6 @@ void calculatePay(Employee *employee) {
 }
 
 
-
 // 顯示薪資明細
 void displayPayroll(Employee *employee) {
 	printf("\n員工姓名：%s\n", employee->name);
@@ -107,12 +128,11 @@ void displayPayroll(Employee *employee) {
 }
 
 // 列印班表
+
 void displaySchedule(Employee *employees, int numEmployees) {
 	printf("%-8s%-8s%-8s%-8s%-8s%-8s%-8s%-8s\n", "", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日");
 	printf("---------------------------------------------------------------\n");
-
 	char shiftNames[TIME_SLOTS][10] = { "早班", "午班", "晚班" };
-
 	for (int shift = 0; shift < TIME_SLOTS; shift++) {
 		printf("%s\n", shiftNames[shift]);
 		for (int i = 0; i < numEmployees; ++i) {
@@ -132,6 +152,7 @@ void modifySchedule(Employee *employee) {
 
 	printf("請輸入要更改時間的次數:");
 	scanf("%d", &num);
+
 	for (int i = 0; i < num; i++) {
 		printf("\n請輸入要修改員工 %s 的排班的日期(1-7)和時段(1-3)：", employee->name);
 		scanf("%d %d", &day, &timeSlot);
@@ -139,6 +160,8 @@ void modifySchedule(Employee *employee) {
 		scanf("%d", &employee->schedule[day - 1][timeSlot - 1]);
 	}
 }
+
+
 
 int main() {
 	int numEmployees;
@@ -177,6 +200,7 @@ int main() {
 			scanf("%d", &i);
 			modifySchedule(&employees[i - 1]);
 			break;
+
 		case 3:
 			// 列印員工薪資
 			for (int i = 0; i < numEmployees; ++i) {
@@ -191,8 +215,6 @@ int main() {
 			printf("請輸入有效的選項。\n");
 		}
 	} while (option != 4);
-
 	free(employees);
-
 	return 0;
 }
